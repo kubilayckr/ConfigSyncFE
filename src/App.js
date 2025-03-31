@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchConfig, loadYamlFromResources, getAllSpecificConfigs, getRandomConfigId } from "./services/ConfigService";
-import { applyConfigActions } from "./utils/domManipulator";
+import { applyConfigActions } from "./utils/DomManipulator";
 
 function App() {
   const [config, setConfig] = useState(null);

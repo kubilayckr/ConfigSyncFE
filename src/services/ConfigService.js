@@ -1,6 +1,6 @@
 import axios from "axios";
 import yaml from "yaml";
-import { validateYamlConfig, validateJsonConfig } from "../utils/configValidator";
+import { validateYamlConfig, validateJsonConfig } from "../utils/ConfigValidator";
 
 const API_BASE_URL = "http://localhost:8080/api/v1";
 
