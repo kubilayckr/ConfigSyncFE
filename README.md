@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# ConfigSync - Frontend (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
+ConfigSync Frontend is a React application that dynamically manipulates the DOM based on configuration data fetched from the backend API or local YAML files. The application either retrieves configuration data via API calls (in JSON format) or reads YAML files located in the public resources folder to dynamically render content on web pages based on predefined rules.
 
-## Available Scripts
+## Technologies Used
+- **React 19.1.0**
+- **Axios (for API calls)**
+- **js-yaml (for parsing YAML files)**
+- **React Router (for navigation)**
 
-In the project directory, you can run:
+## Setup & Installation
+Follow these steps to set up and run the frontend application:
 
-### `npm start`
+### 1. Clone the Repository:
+```sh
+git clone https://github.com/kubilayckr/ConfigSyncFE.git
+cd configsync-frontend
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Install Dependencies:
+```sh
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 3. Run the Application:
+```sh
+npm start
+```
 
-### `npm test`
+The application will start on:
+```
+http://localhost:3000/
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Data Handling & Dynamic DOM Manipulation
 
-### `npm run build`
+The application supports two modes for fetching configuration data:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. **Fetching Configuration from the Backend API**  
+The frontend makes API calls to the backend to retrieve configuration data in JSON format.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. **Reading Configuration from Local YAML Files**  
+Alternatively, the frontend can read configuration data from YAML files located in the `public/resources` folder. The YAML data is parsed and used to update the DOM.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Integration
+The frontend communicates with the backend using API calls to fetch configuration data. This data is used to dynamically update the DOM based on the configuration rules.
 
-### `npm run eject`
+### ConfigService
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The `ConfigService` is responsible for fetching configuration data from the backend API and loading it from local YAML files. It handles both the API calls and reading YAML files to provide the necessary configuration data for the application.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ConfigValidator
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The `ConfigValidator` is responsible for validating the configuration data. It ensures that the data retrieved from both the API (in JSON format) and the YAML files is structured correctly and adheres to predefined templates. This validation ensures that the configuration data is safe to use for dynamic rendering.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### DomManipulator
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The `DomManipulator` is responsible for dynamically updating the DOM based on the configuration data and predefined rules. The DOM is manipulated based on the "action" specified in the configuration, such as showing/hiding elements, changing text, or updating styles.
